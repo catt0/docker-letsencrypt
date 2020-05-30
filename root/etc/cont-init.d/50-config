@@ -188,7 +188,7 @@ if [ "$VALIDATION" = "dns" ]; then
   elif [[ "$DNSPLUGIN" =~ ^(google)$ ]]; then
     if [ -n "$PROPAGATION" ];then PROPAGATIONPARAM="--dns-${DNSPLUGIN}-propagation-seconds ${PROPAGATION}"; fi
     PREFCHAL="--dns-${DNSPLUGIN} --dns-${DNSPLUGIN}-credentials /config/dns-conf/${DNSPLUGIN}.json ${PROPAGATIONPARAM} --manual-public-ip-logging-ok"
-  elif [[ "$DNSPLUGIN" =~ ^(aliyun|domeneshop|inwx|transip)$ ]]; then
+  elif [[ "$DNSPLUGIN" =~ ^(aliyun|domeneshop|inwx|transip|hetzner)$ ]]; then
     if [ -n "$PROPAGATION" ];then PROPAGATIONPARAM="--certbot-dns-${DNSPLUGIN}:dns-${DNSPLUGIN}-propagation-seconds ${PROPAGATION}"; fi
     PREFCHAL="-a certbot-dns-${DNSPLUGIN}:dns-${DNSPLUGIN} --certbot-dns-${DNSPLUGIN}:dns-${DNSPLUGIN}-credentials /config/dns-conf/${DNSPLUGIN}.ini ${PROPAGATIONPARAM} --manual-public-ip-logging-ok"
   else
